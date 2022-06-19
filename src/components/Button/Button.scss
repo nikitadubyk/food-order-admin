@@ -1,0 +1,30 @@
+.button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: #0ec645;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    transition: 0.3s background-color;
+    &:hover {
+        background-color: #0daa3c;
+    }
+
+    &-reverse {
+        background-color: rgb(190, 190, 190);
+        font-size: 20px;
+        color: #000;
+        &:hover {
+            background-color: rgb(219, 219, 219);
+        }
+    }
+
+    &-warning {
+        background-color: rgb(194, 0, 0);
+        color: #fff;
+        &:hover {
+            background-color: rgb(216, 0, 0);
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.login {
+    padding: 5rem 0;
+    h2 {
+        text-align: center;
+    }
+    .form {
+        margin: 2rem auto 0 auto;
+        width: 20rem;
+        padding: 2rem;
+        border-radius: 2rem;
+        background-color: rgb(223, 222, 222);
+        div {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+            label {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+            input {
+                padding: 0.25rem;
+                font-size: 1.2rem;
+            }
+            p {
+                color: rgb(224, 4, 4);
+                margin-top: 0.25rem;
+            }
+        }
+    }
+}
