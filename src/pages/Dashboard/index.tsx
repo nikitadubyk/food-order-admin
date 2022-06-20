@@ -8,9 +8,10 @@ import { selectAuth } from '../../redux/auth/selector'
 
 import Header from '../../components/Header'
 import ProductsList from '../../components/ProductsList'
+import Spinner from '../../components/Spinner'
+import NewProduct from '../../components/NewProduct'
 
 import './Dashboard.scss'
-import Spinner from '../../components/Spinner'
 
 const Dashboard: React.FC = () => {
     const { token } = useSelector(selectAuth)
@@ -29,6 +30,7 @@ const Dashboard: React.FC = () => {
                 <h2>Основная информация</h2>
 
                 <h2>Товары</h2>
+                <NewProduct />
                 {loadingStatus === 'loading' && <Spinner />}
                 {loadingStatus === 'error' && (
                     <p>Произошла ошибка при получении товаров</p>

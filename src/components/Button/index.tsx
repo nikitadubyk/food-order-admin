@@ -7,6 +7,7 @@ interface ButtonProps {
     reverse?: boolean
     warning?: boolean
     onClick?: () => void
+    className?: string
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,12 +15,13 @@ const Button: React.FC<ButtonProps> = ({
     reverse,
     warning,
     onClick,
+    className,
 }) => {
     return (
         <button
             className={`button ${reverse && 'button-reverse'} ${
                 warning && 'button-warning'
-            }`}
+            } ${className}`}
             onClick={onClick}
         >
             {children}
