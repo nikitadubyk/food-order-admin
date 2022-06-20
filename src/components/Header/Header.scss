@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 5rem;
+    background-color: #000;
+    padding: 0 5rem;
+    &__title {
+        color: #fff;
+        font-size: 1.5rem;
+        text-decoration: none;
+    }
+    &__nav {
+        ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            li {
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    margin-right: 1rem;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
