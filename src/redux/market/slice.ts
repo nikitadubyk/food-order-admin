@@ -24,7 +24,13 @@ const initialState: InitialState = {
 const marketSlice = createSlice({
     name: 'market',
     initialState,
-    reducers: {},
+    reducers: {
+        updateFood: (state, action) => {
+            if (state.market) {
+                state.market.food = action.payload
+            }
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchMarketInfo.pending, state => {
@@ -40,5 +46,5 @@ const marketSlice = createSlice({
     },
 })
 
-// export const {} = marketSlice.actions
+export const { updateFood } = marketSlice.actions
 export default marketSlice.reducer

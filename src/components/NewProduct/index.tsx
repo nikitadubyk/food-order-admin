@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectAuth } from '../../redux/auth/selector'
 import { selectMarket } from '../../redux/market/selector'
+import { updateFood } from '../../redux/market/slice'
 
 import Button from '../Button'
 import Spinner from '../Spinner'
@@ -32,11 +33,10 @@ const NewProduct: React.FC = () => {
     } = useForm()
     const { token } = useSelector(selectAuth)
     const { market } = useSelector(selectMarket)
+    const dispatch = useDispatch()
 
     const onSubmitHandler: SubmitHandler<FormInputs> = async data => {
-        console.log(data)
-
-        await request(
+        const res = await request(
             `${process.env.REACT_APP_BACKEND_URL}/food`,
             'POST',
             JSON.stringify(data),
@@ -49,6 +49,7 @@ const NewProduct: React.FC = () => {
         if (!error) {
             reset()
             setSuccess('Товар успешно добавлен в ресторан!')
+            dispatch(updateFood(res))
 
             setTimeout(() => {
                 setSuccess(null)
@@ -71,6 +72,7 @@ const NewProduct: React.FC = () => {
                     {success && (
                         <p className='new-product__success'>{success}</p>
                     )}
+                    {error && <p className='new-product__error'>{error}</p>}
                     <form onSubmit={handleSubmit(onSubmitHandler)}>
                         <div className='new-product__form__inputs'>
                             <label htmlFor='title'>Заголовок</label>

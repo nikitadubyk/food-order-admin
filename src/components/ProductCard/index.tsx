@@ -1,5 +1,10 @@
 import React from 'react'
 import { ProductCardType } from './types'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateFood } from '../../redux/market/slice'
+import { selectAuth } from '../../redux/auth/selector'
+import { selectMarket } from '../../redux/market/selector'
+import { useHttp } from '../../hooks/http.hook'
 
 import Button from '../Button'
 
@@ -14,6 +19,25 @@ const ProductCard: React.FC<ProductCardType> = ({
     gramm,
     price,
 }) => {
+    const { loading, error, request } = useHttp()
+    const { token } = useSelector(selectAuth)
+    const { market } = useSelector(selectMarket)
+    const dispatch = useDispatch()
+
+    const deleteHandler = async (id: string) => {
+        await request(
+            `${process.env.REACT_APP_BACKEND_URL}/food/${id}`,
+            'DELETE',
+            null,
+            {
+                Authorization: 'Bearer ' + token,
+            }
+        )
+
+        !error &&
+            dispatch(updateFood(market?.food.filter(food => food.id !== id)))
+    }
+
     return (
         <div className={style.food__card}>
             <img src={image} alt={title} />
@@ -52,7 +76,7 @@ const ProductCard: React.FC<ProductCardType> = ({
                             </g>
                         </svg>
                     </Button>
-                    <Button>
+                    <Button onClick={() => deleteHandler(id)}>
                         <svg
                             height='20px'
                             width='20px'
