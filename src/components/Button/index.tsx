@@ -8,6 +8,7 @@ interface ButtonProps {
     warning?: boolean
     onClick?: () => void
     className?: string
+    type?: 'button' | 'submit' | 'reset'
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,9 +17,11 @@ const Button: React.FC<ButtonProps> = ({
     warning,
     onClick,
     className,
+    type,
 }) => {
     return (
         <button
+            type={type ? type : 'submit'}
             className={`button ${reverse && 'button-reverse'} ${
                 warning && 'button-warning'
             } ${className}`}
