@@ -1,0 +1,14 @@
+.new-filter {
+    &__input {
+        font-size: 1.2rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    &__plus,
+    &__cansel {
+        margin-right: 1rem;
+    }
+    &__add {
+        margin: 0 0.5rem;
+    }
+}

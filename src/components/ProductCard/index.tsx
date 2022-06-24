@@ -213,7 +213,9 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
                 <Button>V</Button>
 
-                <Button onClick={changeEditing}>X</Button>
+                <Button onClick={changeEditing} className={style.form__delete}>
+                    X
+                </Button>
             </div>
             {loading && <Spinner width={20} height={20} />}
             {error && <p>Произошла ошибка, попробуйте еще</p>}

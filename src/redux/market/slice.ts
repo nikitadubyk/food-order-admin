@@ -30,6 +30,11 @@ const marketSlice = createSlice({
                 state.market.food = action.payload
             }
         },
+        updateFilter: (state, action) => {
+            if (state.market) {
+                state.market.filters = action.payload
+            }
+        },
     },
     extraReducers: builder => {
         builder
@@ -46,5 +51,5 @@ const marketSlice = createSlice({
     },
 })
 
-export const { updateFood } = marketSlice.actions
+export const { updateFood, updateFilter } = marketSlice.actions
 export default marketSlice.reducer
