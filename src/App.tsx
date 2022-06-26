@@ -4,6 +4,7 @@ import { useAuth } from './hooks/auth.hook'
 
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Orders from './pages/Orders'
 
 const App: React.FC = () => {
     const { token } = useAuth()
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         routes = (
             <>
                 <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/orders' element={<Orders />} />
                 <Route
                     path='*'
                     element={<Navigate to='/dashboard' replace />}

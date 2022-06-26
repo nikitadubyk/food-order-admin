@@ -1,0 +1,13 @@
+.orders {
+    padding: 2rem 0;
+    h2 {
+        font-size: 2rem;
+    }
+    &__stats {
+        &__info {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+    }
+}

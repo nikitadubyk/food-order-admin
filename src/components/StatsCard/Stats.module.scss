@@ -1,0 +1,15 @@
+.stats__card {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    min-height: 5rem;
+    background-color: #0ec645;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-right: 2rem;
+    &__data {
+        font-size: 2rem;
+    }
+}

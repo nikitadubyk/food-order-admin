@@ -27,24 +27,47 @@ const Dashboard: React.FC = () => {
         <>
             <Header />
 
-            <div className='container'>
-                <h2>Основная информация</h2>
+            {loadingStatus === 'loading' && <Spinner />}
+            {loadingStatus === 'error' && (
+                <p>Произошла ошибка при получении информации о ресторане</p>
+            )}
 
-                <div className='filters'>
-                    <h2>Фильтры товаров</h2>
-                    {market && <FiltersList filters={market.filters} />}
-                </div>
+            {loadingStatus === 'idle' && (
+                <div className='container'>
+                    <div className='restaraunt__info'>
+                        <h2>Основная информация о ресторане</h2>
 
-                <div>
-                    <h2>Товары</h2>
-                    <NewProduct />
-                    {loadingStatus === 'loading' && <Spinner />}
-                    {loadingStatus === 'error' && (
-                        <p>Произошла ошибка при получении товаров</p>
-                    )}
-                    {market && <ProductsList products={market.food} />}
+                        {market && (
+                            <div>
+                                <p>
+                                    <span>Название ресторана</span> -{' '}
+                                    {market.name}
+                                </p>
+                                <p>
+                                    <span>Цена доставки</span> -{' '}
+                                    {market.priceDelivery} ₽
+                                </p>
+                                <p>
+                                    <span>Время доставки</span> -{' '}
+                                    {market.timeDelivery} мин.
+                                </p>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className='filters'>
+                        <h2>Фильтры товаров</h2>
+                        {market && <FiltersList filters={market.filters} />}
+                    </div>
+
+                    <div>
+                        <h2>Товары</h2>
+                        <NewProduct />
+
+                        {market && <ProductsList products={market.food} />}
+                    </div>
                 </div>
-            </div>
+            )}
         </>
     )
 }

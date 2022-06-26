@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../redux/auth/slice'
 import { useNavigate } from 'react-router-dom'
@@ -26,13 +26,7 @@ const Header: React.FC = () => {
             <nav className='header__nav'>
                 <ul>
                     <li>
-                        <NavLink to='/'>Товары</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/'>Link</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/'>Link</NavLink>
+                        <Link to='/orders'>Заказы</Link>
                     </li>
                     <li>
                         <Button onClick={exit}>Выйти</Button>
