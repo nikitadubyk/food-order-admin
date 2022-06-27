@@ -9,12 +9,17 @@ export const useAuth = () => {
 
     useEffect(() => {
         //@ts-ignore
-        const storedData = JSON.parse(localStorage.getItem('userData'))
-        if (storedData && storedData.token) {
+        const storedData = JSON.parse(localStorage.getItem('adminData'))
+        if (
+            storedData &&
+            storedData.token &&
+            storedData.expiration >= new Date().getTime()
+        ) {
             dispatch(
                 login({
                     token: storedData.token,
                     marketId: storedData.marketId,
+                    expiration: storedData.expiration,
                 })
             )
         }

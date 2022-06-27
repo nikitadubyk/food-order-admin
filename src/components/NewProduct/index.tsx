@@ -200,12 +200,44 @@ const NewProduct: React.FC = () => {
                                     </p>
                                 )}
                             </div>
+                            <div className='new-product__form__inputs'>
+                                <label htmlFor='position'>Позиция товара</label>
+                                <input
+                                    {...register('position', {
+                                        required: 'Заполните это поле',
+                                    })}
+                                    type='number'
+                                    id='position'
+                                    min={1}
+                                    max={
+                                        market
+                                            ? market.food.length + 1
+                                            : undefined
+                                    }
+                                    defaultValue={
+                                        market
+                                            ? market.food.length + 1
+                                            : undefined
+                                    }
+                                    placeholder='Позиция'
+                                />
+                                {errors.position?.message && (
+                                    <p className='new-product__error'>
+                                        {errors.position.message}
+                                    </p>
+                                )}
+                            </div>
                         </div>
 
                         <Button className='new-product__button_add'>
                             Добавить товар
                         </Button>
-                        <Button onClick={() => setIsOpenForm(false)}>
+                        <Button
+                            onClick={() => {
+                                setIsOpenForm(false)
+                                reset()
+                            }}
+                        >
                             Отмена
                         </Button>
                     </form>
